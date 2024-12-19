@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NearbyCitiesView: View {
     @StateObject private var viewModel = CityViewModel()
+    @State private var isAlertPresented = false
     
     var body: some View {
         NavigationView {
@@ -26,7 +27,23 @@ struct NearbyCitiesView: View {
             }
             .navigationTitle(NSLocalizedString("nearbyCitiesTitle", comment: "Title for Nearby Cities screen"))
         }
-        .onAppear { viewModel.fetchCities() }
+        .onAppear { 
+            viewModel.fetchCities()
+        }
+        .alert(isPresented: $viewModel.permissionDeniedAlert) {
+            Alert(
+                title: Text(NSLocalizedString("locationPermissionDeniedTitle", comment: "Alert title when location is denied")),
+                message: Text(NSLocalizedString("locationPermissionDeniedMessage", comment: "Alert message when location is denied")),
+                primaryButton: .default(Text(NSLocalizedString("openSettingsButton", comment: "Button title to open settings"))) {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                },
+                secondaryButton: .cancel() {
+                    isAlertPresented = false
+                }
+            )
+        }
     }
     
     private var permissionDeniedView: some View {

@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-enum ViewState {
+enum ViewState: Equatable {
     case permissionDenied
     case obtainingLocation
     case cities
@@ -18,6 +18,7 @@ enum ViewState {
 final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var cities: [City] = []
     @Published var viewState: ViewState = .obtainingLocation
+    @Published var permissionDeniedAlert: Bool = false
     
     private let locationManager = CLLocationManager()
     private let cityService: CityService
@@ -58,6 +59,7 @@ final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         }
     }
     
+    // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             userLocation = location
@@ -73,6 +75,7 @@ final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .denied, .restricted:
+            permissionDeniedAlert = true
             viewState = .permissionDenied
         case .authorizedWhenInUse, .authorizedAlways:
             locationManager.startUpdatingLocation()

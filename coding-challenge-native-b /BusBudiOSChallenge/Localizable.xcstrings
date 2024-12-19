@@ -67,6 +67,12 @@
         }
       }
     },
+    "locationPermissionDeniedMessage" : {
+      "comment" : "Alert message when location is denied"
+    },
+    "locationPermissionDeniedTitle" : {
+      "comment" : "Alert title when location is denied"
+    },
     "nearbyCitiesTitle" : {
       "comment" : "Title for Nearby Cities screen",
       "localizations" : {
@@ -111,8 +117,11 @@
         }
       }
     },
+    "openSettingsButton" : {
+      "comment" : "Button title to open settings"
+    },
     "permissionDeniedMessage" : {
-      "comment" : "Message when location access is denied",
+      "comment" : "Message displayed when location access is denied\n   Message when location access is denied",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -123,7 +132,7 @@
       }
     },
     "tryAgainButton" : {
-      "comment" : "Label for Try Again button",
+      "comment" : "Text for the try again button",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
