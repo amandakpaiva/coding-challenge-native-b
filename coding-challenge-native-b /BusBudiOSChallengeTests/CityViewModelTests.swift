@@ -42,12 +42,10 @@ class CityViewModelTests: XCTestCase {
     func testFetchCities_noUserLocation() {
         viewModel.userLocation = nil
         viewModel.fetchCities()
-        
-        XCTAssertNotNil(viewModel.error)
-    }
-    
-    func testLocationPermissionDenied() {
-        viewModel.locationPermissionDenied = true
-        XCTAssertEqual(viewModel.locationPermissionDenied, true)
+        if case .error(let errorMessage) = viewModel.viewState {
+            XCTAssertEqual(errorMessage, "Location not available.")
+        } else {
+            XCTFail("Expected viewState to be .error with message 'Location not available.'")
+        }
     }
 }
