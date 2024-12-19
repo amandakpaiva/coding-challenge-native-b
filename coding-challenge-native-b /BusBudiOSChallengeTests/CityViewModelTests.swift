@@ -42,10 +42,12 @@ class CityViewModelTests: XCTestCase {
     func testFetchCities_noUserLocation() {
         viewModel.userLocation = nil
         viewModel.fetchCities()
-        if case .error(let errorMessage) = viewModel.viewState {
-            XCTAssertEqual(errorMessage, "Location not available.")
-        } else {
-            XCTFail("Expected viewState to be .error with message 'Location not available.'")
+        switch viewModel.viewState {
+        case .error(let errorMessage):
+            XCTAssertEqual(errorMessage, "Localização não disponível.")
+        default:
+            XCTFail("Expected viewState to be .error with message 'Localização não disponível.'")
         }
     }
+
 }
