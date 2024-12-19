@@ -24,19 +24,19 @@ struct NearbyCitiesView: View {
                     errorView(message: message)
                 }
             }
-            .navigationTitle("Nearby Cities")
+            .navigationTitle(NSLocalizedString("nearbyCitiesTitle", comment: "Title for Nearby Cities screen"))
         }
         .onAppear { viewModel.fetchCities() }
     }
     
     private var permissionDeniedView: some View {
-        Text("Permission denied. Please enable location access.")
+        Text(NSLocalizedString("permissionDeniedMessage", comment: "Message when location access is denied"))
             .multilineTextAlignment(.center)
             .padding()
     }
     
     private var obtainingLocationView: some View {
-        ProgressView("Obtaining Location...")
+        ProgressView(NSLocalizedString("obtainingLocation", comment: "Message displayed while obtaining location"))
             .padding()
     }
     
@@ -46,7 +46,9 @@ struct NearbyCitiesView: View {
                 VStack(alignment: .leading) {
                     Text(city.cityName).font(.headline)
                     if let distance = city.distance {
-                        Text(String(format: "%.2f km away", distance)).font(.subheadline)
+                        Text(String(format: NSLocalizedString("distanceFormat", comment: "Format for distance display"), distance))
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
                     }
                 }
             }
@@ -61,7 +63,7 @@ struct NearbyCitiesView: View {
                 .padding()
             
             Button(action: viewModel.fetchCities) {
-                Text("Try Again")
+                Text(NSLocalizedString("tryAgainButton", comment: ""))
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()

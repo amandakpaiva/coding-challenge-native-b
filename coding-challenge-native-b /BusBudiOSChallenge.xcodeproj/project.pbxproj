@@ -20,6 +20,7 @@
 		5E426B392D12F57100DA5036 /* CityViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E426B382D12F57100DA5036 /* CityViewModelTests.swift */; };
 		5E426B3B2D12F59900DA5036 /* DIstanceCalculateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E426B3A2D12F59900DA5036 /* DIstanceCalculateTests.swift */; };
 		5E426B3F2D1319E800DA5036 /* CityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E426B3E2D1319E800DA5036 /* CityServiceTests.swift */; };
+		5EFE0E2B2D139DA8006E8545 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EFE0E2A2D139DA8006E8545 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5E426B382D12F57100DA5036 /* CityViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModelTests.swift; sourceTree = "<group>"; };
 		5E426B3A2D12F59900DA5036 /* DIstanceCalculateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIstanceCalculateTests.swift; sourceTree = "<group>"; };
 		5E426B3E2D1319E800DA5036 /* CityServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityServiceTests.swift; sourceTree = "<group>"; };
+		5EFE0E2A2D139DA8006E8545 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				5E426B192D126B8800DA5036 /* Util */,
 				5E426B0A2D126AB900DA5036 /* Assets.xcassets */,
 				5E426B0C2D126AB900DA5036 /* Preview Content */,
+				5EFE0E2A2D139DA8006E8545 /* Localizable.xcstrings */,
 			);
 			path = BusBudiOSChallenge;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 5E426AFA2D126AB800DA5036;
 			productRefGroup = 5E426B042D126AB900DA5036 /* Products */;
@@ -246,6 +250,7 @@
 			files = (
 				5E426B0E2D126AB900DA5036 /* Preview Assets.xcassets in Resources */,
 				5E426B0B2D126AB900DA5036 /* Assets.xcassets in Resources */,
+				5EFE0E2B2D139DA8006E8545 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

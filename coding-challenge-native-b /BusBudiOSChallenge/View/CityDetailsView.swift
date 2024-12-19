@@ -18,7 +18,7 @@ struct CityDetailView: View {
                 .multilineTextAlignment(.center)
             
             if let distance = city.distance {
-                Text("Distance: \(String(format: "%.2f", distance)) km")
+                Text(String(format: NSLocalizedString("distanceLabel", comment: "distance"), distance))
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -33,7 +33,7 @@ struct CityDetailView: View {
             .cornerRadius(10)
             
             Button(action: openCityOnBusbud) {
-                Text("Open in Busbud")
+                Text(NSLocalizedString("openInBusbud", comment: "Button to open city in Busbud"))
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()

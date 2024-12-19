@@ -12,7 +12,7 @@ enum ViewState {
     case permissionDenied
     case obtainingLocation
     case cities
-    case error(String) // Estado de erro com mensagem
+    case error(String)
 }
 
 final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -33,7 +33,7 @@ final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
     
     func fetchCities() {
         guard let location = userLocation else {
-            viewState = .error("Location not available.")
+            viewState = .error(NSLocalizedString("locationNotAvailable", comment: "Error when user location is not available"))
             return
         }
         
@@ -42,23 +42,22 @@ final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
                 switch result {
                 case .success(let cities):
                     if cities.isEmpty {
-                        self?.viewState = .error("No cities found nearby.")
+                        self?.viewState = .error(NSLocalizedString("noCitiesFound", comment: "Error when no cities are found nearby"))
                     } else {
                         self?.cities = cities.map { city in
                             var updatedCity = city
-                            updatedCity.distance = location.distance(to: city) / 1000 
+                            updatedCity.distance = location.distance(to: city) / 1000
                             return updatedCity
                         }.sorted { ($0.distance ?? 0) < ($1.distance ?? 0) }
                         self?.viewState = .cities
                     }
                 case .failure:
-                    self?.viewState = .error("Failed to load cities. Check your internet connection.")
+                    self?.viewState = .error(NSLocalizedString("fetchCitiesFailed", comment: "Error when city fetch fails"))
                 }
             }
         }
     }
     
-    // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             userLocation = location
@@ -68,7 +67,7 @@ final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        viewState = .error("Failed to get your location.")
+        viewState = .error(NSLocalizedString("fetchCitiesFailed", comment: "Error when city fetch fails"))
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
