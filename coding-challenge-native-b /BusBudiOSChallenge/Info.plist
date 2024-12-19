@@ -2,7 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
     <key>CFBundleURLTypes</key>
     <array>
         <dict/>
@@ -13,14 +12,12 @@
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>This app uses your location to improve your experience.</string>
 
-    
     <key>CFBundleLocalizations</key>
     <array>
         <string>en</string>
         <string>pt</string>
     </array>
 
-    
     <key>UIUserInterfaceStyle</key>
     <string>Automatic</string>
 </dict>
